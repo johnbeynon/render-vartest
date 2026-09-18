@@ -58,11 +58,11 @@ services:
       #     name: vartest-webservice
       #     type: web
       #     envVarKey: RENDER_GIT_COMMIT
-      - key: SRC_RENDER_GIT_REPO_SLUG
-        fromService:
-          name: vartest-webservice
-          type: web
-          envVarKey: RENDER_GIT_REPO_SLUG
+      # - key: SRC_RENDER_GIT_REPO_SLUG
+      #   fromService:
+      #     name: vartest-webservice
+      #     type: web
+      #     envVarKey: RENDER_GIT_REPO_SLUG
       - key: SRC_RENDER_INSTANCE_ID
         fromService:
           name: vartest-webservice
