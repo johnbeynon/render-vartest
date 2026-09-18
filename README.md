@@ -13,25 +13,40 @@ The `render.yaml` on `vartest-webservice-2` attempts to source all [All runtimes
 
 ### Can be accessed across services
 
-| envVarKey | Notes |
-|---|---|
-| `IS_PULL_REQUEST` | |
-| `RENDER_DISCOVERY_SERVICE` | |
-| `RENDER_EXTERNAL_HOSTNAME` | |
-| `RENDER_EXTERNAL_URL` | |
+| envVarKey |
+|---|
+| `IS_PULL_REQUEST` |
+| `RENDER_DISCOVERY_SERVICE` |
+| `RENDER_EXTERNAL_HOSTNAME` |
+| `RENDER_EXTERNAL_URL` |
 
 ### Cannot be accessed across services
 
-| envVarKey | Notes |
-|---|---|
-| `RENDER` | |
-| `RENDER_CPU_COUNT` | |
-| `RENDER_GIT_BRANCH` | |
-| `RENDER_GIT_COMMIT` | |
-| `RENDER_GIT_REPO_SLUG` | |
-| `RENDER_INSTANCE_ID` | |
-| `RENDER_SERVICE_ID` | |
-| `RENDER_SERVICE_NAME` | |
-| `RENDER_SERVICE_TYPE` | |
-| `RENDER_WEB_CONCURRENCY` | |
-| `WEB_CONCURRENCY` | |
+| envVarKey |
+|---|
+| `RENDER` |
+| `RENDER_CPU_COUNT` |
+| `RENDER_GIT_BRANCH` |
+| `RENDER_GIT_COMMIT` |
+| `RENDER_GIT_REPO_SLUG` |
+| `RENDER_INSTANCE_ID` |
+| `RENDER_SERVICE_ID` |
+| `RENDER_SERVICE_NAME` |
+| `RENDER_SERVICE_TYPE` |
+| `RENDER_WEB_CONCURRENCY` |
+| `WEB_CONCURRENCY` |
+
+## Why
+
+Access via `fromService` is controlled by a `PublicEnvVars()` method on each service type. When a blueprint resolves `fromService` references, only the vars returned by `PublicEnvVars()` are available.
+
+For web services (`Server`), `PublicEnvVars()` returns:
+- `RENDER_EXTERNAL_HOSTNAME`
+- `RENDER_EXTERNAL_URL`
+- `IS_PULL_REQUEST`
+- `RENDER_INTERNAL_HOSTNAME`
+- `RENDER_DISCOVERY_SERVICE`
+
+All other service types fall back to `BaseService.PublicEnvVars()`, which returns `nil`.
+
+`RENDER_SERVICE_ID` is not in any `PublicEnvVars()` implementation — it is injected directly into container specs at runtime, after blueprint evaluation, so it is never available to `fromService`.
