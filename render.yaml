@@ -88,11 +88,11 @@ services:
       #     name: vartest-webservice
       #     type: web
       #     envVarKey: RENDER_WEB_CONCURRENCY
-      - key: SRC_WEB_CONCURRENCY
-        fromService:
-          name: vartest-webservice
-          type: web
-          envVarKey: WEB_CONCURRENCY
+      # - key: SRC_WEB_CONCURRENCY
+      #   fromService:
+      #     name: vartest-webservice
+      #     type: web
+      #     envVarKey: WEB_CONCURRENCY
 
   - type: web
     name: vartest-static
