@@ -9,10 +9,12 @@ services:
       - key: PORT
         value: 10000
       - key: APP_HOST
-        fromService:
-          name: vartest-webservice
-          type: web
-          envVarKey: RENDER_SERVICE_ID
+      # This tests the last example at https://render.com/docs/blueprint-spec#referencing-service-properties
+      # RENDER_EXTERNAL_HOSTNAME works but RENDER_SERVICE_ID does not
+        # fromService:
+        #   name: vartest-webservice
+        #   type: web
+        #   envVarKey: RENDER_SERVICE_ID
 
   - type: web
     name: vartest-webservice-2
