@@ -18,11 +18,81 @@ services:
     envVars:
       - key: PORT
         value: 10000
-      - key: WEBSERVICE_ID
+      - key: SRC_IS_PULL_REQUEST
+        fromService:
+          name: vartest-webservice
+          type: web
+          envVarKey: IS_PULL_REQUEST
+      - key: SRC_RENDER
+        fromService:
+          name: vartest-webservice
+          type: web
+          envVarKey: RENDER
+      - key: SRC_RENDER_CPU_COUNT
         fromService:
           name: vartest-webservice
           type: web
           envVarKey: RENDER_CPU_COUNT
+      - key: SRC_RENDER_DISCOVERY_SERVICE
+        fromService:
+          name: vartest-webservice
+          type: web
+          envVarKey: RENDER_DISCOVERY_SERVICE
+      - key: SRC_RENDER_EXTERNAL_HOSTNAME
+        fromService:
+          name: vartest-webservice
+          type: web
+          envVarKey: RENDER_EXTERNAL_HOSTNAME
+      - key: SRC_RENDER_EXTERNAL_URL
+        fromService:
+          name: vartest-webservice
+          type: web
+          envVarKey: RENDER_EXTERNAL_URL
+      - key: SRC_RENDER_GIT_BRANCH
+        fromService:
+          name: vartest-webservice
+          type: web
+          envVarKey: RENDER_GIT_BRANCH
+      - key: SRC_RENDER_GIT_COMMIT
+        fromService:
+          name: vartest-webservice
+          type: web
+          envVarKey: RENDER_GIT_COMMIT
+      - key: SRC_RENDER_GIT_REPO_SLUG
+        fromService:
+          name: vartest-webservice
+          type: web
+          envVarKey: RENDER_GIT_REPO_SLUG
+      - key: SRC_RENDER_INSTANCE_ID
+        fromService:
+          name: vartest-webservice
+          type: web
+          envVarKey: RENDER_INSTANCE_ID
+      - key: SRC_RENDER_SERVICE_ID
+        fromService:
+          name: vartest-webservice
+          type: web
+          envVarKey: RENDER_SERVICE_ID
+      - key: SRC_RENDER_SERVICE_NAME
+        fromService:
+          name: vartest-webservice
+          type: web
+          envVarKey: RENDER_SERVICE_NAME
+      - key: SRC_RENDER_SERVICE_TYPE
+        fromService:
+          name: vartest-webservice
+          type: web
+          envVarKey: RENDER_SERVICE_TYPE
+      - key: SRC_RENDER_WEB_CONCURRENCY
+        fromService:
+          name: vartest-webservice
+          type: web
+          envVarKey: RENDER_WEB_CONCURRENCY
+      - key: SRC_WEB_CONCURRENCY
+        fromService:
+          name: vartest-webservice
+          type: web
+          envVarKey: WEB_CONCURRENCY
 
   - type: web
     name: vartest-static
