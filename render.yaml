@@ -93,16 +93,3 @@ services:
       #     name: vartest-webservice
       #     type: web
       #     envVarKey: WEB_CONCURRENCY
-
-  - type: web
-    name: vartest-static
-    runtime: static
-    rootDir: static-site
-    buildCommand: npm install && node build.js
-    staticPublishPath: dist
-    envVars:
-      # - key: WEBSERVICE_ID
-      #   fromService:
-      #     name: vartest-webservice
-      #     type: web
-      #     envVarKey: RENDER_CPU_COUNT
