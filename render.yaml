@@ -28,11 +28,11 @@ services:
       #     name: vartest-webservice
       #     type: web
       #     envVarKey: RENDER
-      - key: SRC_RENDER_CPU_COUNT
-        fromService:
-          name: vartest-webservice
-          type: web
-          envVarKey: RENDER_CPU_COUNT
+      # - key: SRC_RENDER_CPU_COUNT
+      #   fromService:
+      #     name: vartest-webservice
+      #     type: web
+      #     envVarKey: RENDER_CPU_COUNT
       - key: SRC_RENDER_DISCOVERY_SERVICE
         fromService:
           name: vartest-webservice
