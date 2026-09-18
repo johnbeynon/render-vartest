@@ -48,11 +48,11 @@ services:
           name: vartest-webservice
           type: web
           envVarKey: RENDER_EXTERNAL_URL
-      - key: SRC_RENDER_GIT_BRANCH
-        fromService:
-          name: vartest-webservice
-          type: web
-          envVarKey: RENDER_GIT_BRANCH
+      # - key: SRC_RENDER_GIT_BRANCH
+      #   fromService:
+      #     name: vartest-webservice
+      #     type: web
+      #     envVarKey: RENDER_GIT_BRANCH
       - key: SRC_RENDER_GIT_COMMIT
         fromService:
           name: vartest-webservice
