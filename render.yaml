@@ -23,11 +23,11 @@ services:
           name: vartest-webservice
           type: web
           envVarKey: IS_PULL_REQUEST
-      - key: SRC_RENDER
-        fromService:
-          name: vartest-webservice
-          type: web
-          envVarKey: RENDER
+      # - key: SRC_RENDER
+      #   fromService:
+      #     name: vartest-webservice
+      #     type: web
+      #     envVarKey: RENDER
       - key: SRC_RENDER_CPU_COUNT
         fromService:
           name: vartest-webservice
