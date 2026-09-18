@@ -73,11 +73,11 @@ services:
       #     name: vartest-webservice
       #     type: web
       #     envVarKey: RENDER_SERVICE_ID
-      - key: SRC_RENDER_SERVICE_NAME
-        fromService:
-          name: vartest-webservice
-          type: web
-          envVarKey: RENDER_SERVICE_NAME
+      # - key: SRC_RENDER_SERVICE_NAME
+      #   fromService:
+      #     name: vartest-webservice
+      #     type: web
+      #     envVarKey: RENDER_SERVICE_NAME
       - key: SRC_RENDER_SERVICE_TYPE
         fromService:
           name: vartest-webservice
