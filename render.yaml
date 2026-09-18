@@ -10,6 +10,21 @@ services:
         value: 10000
 
   - type: web
+    name: vartest-webservice-2
+    runtime: node
+    rootDir: webservice
+    buildCommand: npm install && npm run build
+    startCommand: node dist/index.js
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: WEBSERVICE_ID
+        fromService:
+          name: vartest-webservice
+          type: web
+          envVarKey: RENDER_SERVICE_ID
+
+  - type: web
     name: vartest-static
     runtime: static
     rootDir: static-site
