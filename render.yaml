@@ -9,8 +9,9 @@ services:
       - key: PORT
         value: 10000
 
-  - type: static
+  - type: web
     name: vartest-static
+    runtime: static
     rootDir: static-site
     buildCommand: npm install && node build.js
     staticPublishPath: dist
