@@ -20,4 +20,4 @@ services:
         fromService:
           name: vartest-webservice
           type: web
-          property: RENDER_SERVICE_ID
+          envVarKey: RENDER_SERVICE_ID
