@@ -1,22 +1,37 @@
 # vartest
 
-A monorepo case demonstrating how to pass a Render service's `RENDER_SERVICE_ID` to another service via `render.yaml`.
+A monorepo testing which Render built-in environment variables can be passed between services via `fromService` in `render.yaml`.
 
 ## Structure
 
-- **webservice/** — TypeScript HTTP server that returns `Hello`
-- **static-site/** — Static site whose build injects the webservice's service ID into the root page
+- **webservice/** — TypeScript HTTP server (`vartest-webservice`) that returns its own `RENDER_SERVICE_ID`
+- **webservice/** — also used by `vartest-webservice-2`, which receives env vars sourced from `vartest-webservice`
 
-## How it works
+## Findings
 
-In `render.yaml`, the static site declares an env var using `fromService`:
+The `render.yaml` on `vartest-webservice-2` attempts to source all [All runtimes](https://render.com/docs/environment-variables#all-runtimes) built-in env vars from `vartest-webservice` using `envVarKey`. The results:
 
-```yaml
-- key: WEBSERVICE_ID
-  fromService:
-    name: vartest-webservice
-    type: web
-    property: RENDER_SERVICE_ID
-```
+### Can be accessed across services
 
-This passes the webservice's `RENDER_SERVICE_ID` into the static site's build environment. The build script (`build.js`) bakes that value into `index.html` at build time, which is then displayed on the root page.
+| envVarKey | Notes |
+|---|---|
+| `IS_PULL_REQUEST` | |
+| `RENDER_DISCOVERY_SERVICE` | |
+| `RENDER_EXTERNAL_HOSTNAME` | |
+| `RENDER_EXTERNAL_URL` | |
+
+### Cannot be accessed across services
+
+| envVarKey | Notes |
+|---|---|
+| `RENDER` | |
+| `RENDER_CPU_COUNT` | |
+| `RENDER_GIT_BRANCH` | |
+| `RENDER_GIT_COMMIT` | |
+| `RENDER_GIT_REPO_SLUG` | |
+| `RENDER_INSTANCE_ID` | |
+| `RENDER_SERVICE_ID` | |
+| `RENDER_SERVICE_NAME` | |
+| `RENDER_SERVICE_TYPE` | |
+| `RENDER_WEB_CONCURRENCY` | |
+| `WEB_CONCURRENCY` | |
