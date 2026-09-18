@@ -22,7 +22,7 @@ services:
         fromService:
           name: vartest-webservice
           type: web
-          envVarKey: RENDER_SERVICE_NAME
+          envVarKey: RENDER_CPU_COUNT
 
   - type: web
     name: vartest-static
@@ -35,4 +35,4 @@ services:
         fromService:
           name: vartest-webservice
           type: web
-          envVarKey: RENDER_SERVICE_NAME
+          envVarKey: RENDER_CPU_COUNT
