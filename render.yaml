@@ -12,7 +12,7 @@ services:
         fromService:
           name: vartest-webservice
           type: web
-          envVarKey: RENDER_EXTERNAL_HOSTNAME
+          envVarKey: RENDER_SERVICE_ID
 
   - type: web
     name: vartest-webservice-2
