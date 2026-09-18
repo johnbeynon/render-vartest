@@ -4,7 +4,7 @@ const port = process.env.PORT || 3000;
 
 const server = http.createServer((_req, res) => {
   res.writeHead(200, { 'Content-Type': 'text/plain' });
-  res.end('Hello');
+  res.end(process.env.RENDER_SERVICE_ID ?? 'RENDER_SERVICE_ID not set');
 });
 
 server.listen(port, () => {
