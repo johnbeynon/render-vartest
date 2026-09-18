@@ -101,8 +101,8 @@ services:
     buildCommand: npm install && node build.js
     staticPublishPath: dist
     envVars:
-      - key: WEBSERVICE_ID
-        fromService:
-          name: vartest-webservice
-          type: web
-          envVarKey: RENDER_CPU_COUNT
+      # - key: WEBSERVICE_ID
+      #   fromService:
+      #     name: vartest-webservice
+      #     type: web
+      #     envVarKey: RENDER_CPU_COUNT
