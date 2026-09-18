@@ -44,7 +44,7 @@ For web services (`Server`), `PublicEnvVars()` returns:
 - `RENDER_EXTERNAL_HOSTNAME`
 - `RENDER_EXTERNAL_URL`
 - `IS_PULL_REQUEST`
-- `RENDER_INTERNAL_HOSTNAME`
+- `RENDER_INTERNAL_HOSTNAME` # this is not documented on the envvar docs page
 - `RENDER_DISCOVERY_SERVICE`
 
 All other service types fall back to `BaseService.PublicEnvVars()`, which returns `nil`.
