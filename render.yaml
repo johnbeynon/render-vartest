@@ -8,11 +8,11 @@ services:
     envVars:
       - key: PORT
         value: 10000
-      - key: MY_RENDER_SERVICE_ID
+      - key: APP_HOST
         fromService:
           name: vartest-webservice
           type: web
-          envVarKey: RENDER_SERVICE_ID
+          envVarKey: RENDER_EXTERNAL_HOSTNAME
 
   - type: web
     name: vartest-webservice-2
@@ -97,8 +97,3 @@ services:
       #   fromService:
       #     name: vartest-webservice
       #     type: web
-      - key: WEBSERVICE_RENDER_SERVICE_ID
-        fromService:
-          name: vartest-webservice
-          type: web
-          envVarKey: MY_RENDER_SERVICE_ID
